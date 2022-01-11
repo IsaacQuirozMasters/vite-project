@@ -1,7 +1,7 @@
 import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, FormControl, FormLabel } from "@chakra-ui/react";
 import { useRef } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import {useAxiosPrivate} from './hooks/useAxiosPrivate';
+import { useAxiosPrivate } from "../hooks/useAxiosPrivate";
 
 interface AlertProps {
   isOpen: boolean;
@@ -45,33 +45,34 @@ export function ChangeUserProfile({ isOpen, onClose }: AlertProps) {
     >
       <AlertDialogOverlay>
         <AlertDialogContent>
-          <AlertDialogHeader fontSize='lg' fontWeight='bold' className="text-white shadow-md">
-            Search File
-          </AlertDialogHeader>
+        <AlertDialogHeader className="text-lg font-bold text-white shadow-md">
+         Buscar Archivo
+        </AlertDialogHeader>
+
 
           <AlertDialogBody>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col p-4 justify-center max-w-screen-lg mx-auto h-full">
               <FormControl >
-                <FormLabel>File</FormLabel>
+                <FormLabel>Archivo</FormLabel>
                 <input {...register("picture")} type="file" />
               </FormControl>
               <Button ref={cancelRef} onClick={onClose}>
-                Cancel
+                Cancelar
               </Button>
               <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               data-ripple-light="true">
-                Accepts
+                Aceptar
               </Button>
             </form>
           </AlertDialogBody>
 
           <AlertDialogFooter>
             <Button ref={cancelRef} onClick={onClose}>
-              Cancel
+              Cancelar
             </Button>
-            <Button colorScheme='red' type="submit" onClick={onClose} ml={3}>
-              Accept
-            </Button>
+            <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded ml-3" type="submit" onClick={onClose}>
+            Aceptar
+            </button>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialogOverlay>
