@@ -22,7 +22,7 @@ export function FriendRequests() {
       }
     }
     getFriendRequests();
-  }, [])
+  }, [axiosPrivate])
 
   async function respondToFriendRequest(id: string, status: string) {
     const data = { status }
