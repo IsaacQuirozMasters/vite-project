@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { FriendRequest } from "../context/interfaces";
+import { Avatar, Box, Button, Flex, Text } from "@chakra-ui/react";
 import { nanoid } from "nanoid";
+import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
 import { useAxiosPrivate } from "../hooks/useAxiosPrivate";
-import {FaWindowClose} from "react-icons/fa";
-import {BsFillPatchCheckFill} from "react-icons/bs";
 
 const RECEIVED_REQUEST_URL = '/api/user/friend-request/me/received-requests';
 const RESPOND_FRIEND_REQUEST_URL = '/api/user/friend-request/response/'
@@ -11,6 +11,8 @@ const RESPOND_FRIEND_REQUEST_URL = '/api/user/friend-request/response/'
 export function FriendRequests() {
   const axiosPrivate = useAxiosPrivate();
   const [friendRequests, setFriendRequests] = useState<FriendRequest[]>();
+
+
 
   useEffect(() => {
     const getFriendRequests = async () => {
@@ -22,7 +24,8 @@ export function FriendRequests() {
       }
     }
     getFriendRequests();
-  }, [axiosPrivate])
+  }, [])
+
 
   async function respondToFriendRequest(id: string, status: string) {
     const data = { status }
@@ -37,26 +40,28 @@ export function FriendRequests() {
   return (
     <>
       {friendRequests?.map((request: FriendRequest) => (
-        <div key={nanoid()} className="flex items-center p-2 h-32 border-2 border-violet">
-          <img src={request?.creator.imagePath} className="w-16 h-16 rounded-full" />
-          <div className="ml-3">
-            <p className="font-normal text-3xl">
+        <Flex key={nanoid()} alignItems='center' p='2' h='32' border='2px' borderColor='violet'>
+          <Avatar src={request?.creator.imagePath} size='xl' />
+          <Box ml='3'>
+            <Text fontWeight='normal' fontSize='3xl'>
               {request?.creator.userName}
-            </p>
-          </div>
-          <button
-            className="rounded-full w-1"
+            </Text>
+          </Box>
+          <Button
+            borderRadius='full'
+            width='1'
             onClick={() => respondToFriendRequest(request.creator.id, 'accepted')}
           >
-            <BsFillPatchCheckFill/>
-          </button>
-          <button
-            className="rounded-full w-1"
+            <CheckIcon />
+          </Button>
+          <Button
+            borderRadius='full'
+            width='1'
             onClick={() => respondToFriendRequest(request.creator.id, 'rejected')}
           >
-            <FaWindowClose/>
-          </button>
-        </div>
+            <CloseIcon />
+          </Button>
+        </Flex>
       ))}
     </>
   )

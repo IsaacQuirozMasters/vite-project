@@ -22,3 +22,13 @@ export interface User {
     children: ReactNode;
   }
   
+
+  
+export interface AlertProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export interface FileInput {
+  picture: FileList;
+} 

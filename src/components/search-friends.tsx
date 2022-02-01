@@ -2,15 +2,8 @@ import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, Al
 import { useRef } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useAxiosPrivate } from "../hooks/useAxiosPrivate";
-
-interface AlertProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-interface FileInput {
-  picture: FileList;
-} 
+import { FileInput } from "../context/interfaces";
+import { AlertProps } from "../context/interfaces";
 
 const FILE_URL = '/api/files/upload';
 
