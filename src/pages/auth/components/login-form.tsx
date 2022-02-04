@@ -1,7 +1,7 @@
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context";
-import axios from "../../../../api/axios";
+import axios from "../../../api/axios";
 import { LoginInput } from "../interfaces/interfaces";
 import { User } from "../../../context/interfaces";
 

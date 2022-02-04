@@ -1,7 +1,7 @@
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { Toaster, toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import axios from "../../../../api/axios";
+import axios from "../../../api/axios";
 import { RegisterInput } from "../interfaces/interfaces";
 
 const REGISTER_URL = '/api/auth/register';
