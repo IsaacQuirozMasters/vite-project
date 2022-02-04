@@ -7,7 +7,7 @@ interface Props {
 
 export default function FormLayout({ children, type }: Props) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-800">
+    <div className="min-h-screen flex items-center justify-center bg-blue-800 dark:bg-gray-800">
       <div className="w-full max-w-lg py-12 px-6 mx-auto space-y-8">
         <div className="text-center">
           <h1 className="text-4xl font-bold">
